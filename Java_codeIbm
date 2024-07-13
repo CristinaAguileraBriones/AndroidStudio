@@ -1,0 +1,131 @@
+package com.midominio.ibmcal;
+
+import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.RadioButton;
+import android.widget.TextView;
+import android.widget.Toast;
+
+import androidx.activity.EdgeToEdge;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.graphics.Insets;
+import androidx.core.view.ViewCompat;
+import androidx.core.view.WindowInsetsCompat;
+
+public class MainActivity extends AppCompatActivity {
+
+    private EditText inches;
+    private TextView textView;
+    private RadioButton male;
+    private RadioButton female;
+    private EditText age;
+    private EditText weigth;
+    private EditText feet;
+    private Button button;
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        EdgeToEdge.enable(this);
+        setContentView(R.layout.activity_main);
+
+        Toast.makeText(this, "¡Bienvenido!", Toast.LENGTH_LONG).show();
+
+        findViews();
+        buttonListener();
+
+
+    }
+
+    private void findViews() {
+
+        textView = findViewById(R.id.text_results);
+        male = findViewById(R.id.radio_button_male);
+        female = findViewById(R.id.radio_button_female);
+        age = findViewById(R.id.radio_button_age);
+        weigth = findViewById(R.id.radio_button_weigth);
+        feet = findViewById(R.id.button_feet);
+        inches = findViewById(R.id.button_inches);
+        button = findViewById(R.id.button_calculate);
+
+    }
+
+    private void buttonListener() {
+
+        button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                double ibm = calculateBIM();
+                finalResults(ibm);
+                finalGuide();
+            }
+        });
+
+
+    }
+
+    private double calculateBIM() {
+
+        //presentamos los valores que el usuario introduce
+
+
+        String peso = weigth.getText().toString();
+        String altura = inches.getText().toString();
+        String altura2 = feet.getText().toString();
+
+        //Utilizamos la clase Integer para pasar de String a numeros
+
+
+        int peson = Integer.parseInt(peso);
+        int alturan = Integer.parseInt(altura);
+        int altura2n = Integer.parseInt(altura2);
+
+        int totalinches = (alturan * 12) + alturan;
+        double totalHeightInMeters = totalinches * 0.0254;
+        double bmi = peson / (totalHeightInMeters * totalHeightInMeters);
+        return bmi;
+    }
+
+    private void finalResults(double bmi) {
+
+        //Utilizamos la clase string para volver el valor double a String
+        String bmiResults = String.valueOf(bmi);
+
+        //resultados:
+
+        String finalResults;
+
+        if (bmi < 18.5) {
+
+            finalResults = bmiResults + " - You are underweigth";
+
+        } else if (bmi > 25) {
+
+            finalResults = bmiResults + " - You are overweigth";
+
+        } else {
+            finalResults = bmiResults + " - You are healthy";
+        }
+
+        textView.setText(finalResults);
+    }
+
+    private void finalGuide() {
+
+        String edad = age.getText().toString();
+        boolean generoM = male.isChecked();
+        boolean generoF = female.isChecked();
+
+        int edadn = Integer.parseInt(edad);
+
+        if (generoM || generoF) {
+            if (edadn <= 18) {
+                textView.setText("Need consult with your doctor");
+            }
+        }
+
+    }
+
+}
