@@ -1,0 +1,66 @@
+package com.midominio.restaurante;
+
+import android.content.Intent;
+import android.os.Bundle;
+import android.view.View;
+
+import androidx.activity.EdgeToEdge;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.cardview.widget.CardView;
+import androidx.core.graphics.Insets;
+import androidx.core.view.ViewCompat;
+import androidx.core.view.WindowInsetsCompat;
+
+public class MainActivity extends AppCompatActivity {
+
+    CardView entrantes;
+    CardView platos;
+    CardView menu;
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        EdgeToEdge.enable(this);
+        setContentView(R.layout.activity_main);
+        findviews();
+
+
+        entrantes.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                Intent entrantesPantalla = new Intent(MainActivity.this, EntrantesActivity.class);
+                startActivity(entrantesPantalla);
+
+            }
+        });
+
+        platos.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                Intent platosPantalla = new Intent(MainActivity.this, PlatosActivity.class);
+                startActivity(platosPantalla);
+            }
+        });
+
+        menu.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                Intent menupantalla = new Intent(MainActivity.this, MenuActivity.class);
+                startActivity(menupantalla);
+            }
+        });
+
+    }
+
+    private void findviews(){
+
+        entrantes = findViewById(R.id.card_view);
+        platos = findViewById(R.id.card_view_2);
+        menu = findViewById(R.id.card_view_3);
+    }
+
+
+}
