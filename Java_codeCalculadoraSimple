@@ -1,0 +1,77 @@
+package com.midominio.calculadorasimple;
+
+import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.TextView;
+import android.widget.Toast;
+
+import androidx.activity.EdgeToEdge;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.graphics.Insets;
+import androidx.core.view.ViewCompat;
+import androidx.core.view.WindowInsetsCompat;
+
+import java.util.Locale;
+
+public class MainActivity extends AppCompatActivity {
+
+    EditText pulgadas;
+    Button botoncillo;
+    TextView texto;
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        EdgeToEdge.enable(this);
+        setContentView(R.layout.activity_main);
+        findViews();
+        buttonListener();
+
+    }
+
+    private void findViews() {
+
+        pulgadas = findViewById(R.id.pulgadas_T);
+        botoncillo = findViewById(R.id.button);
+        texto = findViewById(R.id.texto);
+
+    }
+    private void buttonListener() {
+
+        botoncillo.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                String ySiNoHayPulgada = pulgadas.getText().toString();
+                if(ySiNoHayPulgada.isEmpty()){
+
+                    Toast.makeText(MainActivity.this, "¡No olvides introducir las pulgadas!", Toast.LENGTH_LONG).show();
+
+                }else{
+                    
+                    double re = convertirEnMetros();
+                    resultados(re);
+                }
+
+
+            }
+        });
+
+    }
+
+    private double convertirEnMetros() {
+
+        String pulgadilla = pulgadas.getText().toString();
+        double pulgadillaNum = Double.parseDouble(pulgadilla);
+        return pulgadillaNum/39.37;
+    }
+
+    private void resultados(double valorEnMetros) {
+        String formattedValue = String.format(Locale.getDefault(), "%.2f", valorEnMetros);
+        texto.setText("Son " + formattedValue + " metros");
+
+
+    }
+
+}
