@@ -46,6 +46,21 @@ Los atributos son propiedades que se pueden aplicar a los elementos en XML para 
 - `android:text`: Establece el texto que se mostrará en un `TextView` o `Button`.
   
 - `inputType: tipo_dato`: Restringe el tipo de dato que el usuario puede introducir.
+  
+- fontFamily: El atributo android:fontFamily se utiliza en elementos como TextView y Button para especificar la familia tipográfica que se utilizará para el texto. Puedes elegir entre fuentes predefinidas como sans-serif, serif, monospace, o referenciar una fuente personalizada en tu proyecto.
+
+- ### textSize
+
+En XML de Android, el atributo `android:textSize` se utiliza para definir el tamaño del texto mostrado dentro de elementos como `TextView` y `Button`. Este atributo especifica el tamaño del texto utilizando diferentes unidades, típicamente `sp` (píxeles de escala independiente), `dp` (píxeles de densidad independiente) o `px` (píxeles).
+
+#### Ejemplo de Uso:
+
+```xml
+<TextView
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:text="Texto de Ejemplo"
+    android:textSize="18sp" />
 
 ### ListView
 ListView es un componente que permite mostrar una lista de elementos desplazables en Android. Se utiliza junto con un adaptador para proporcionar los datos que se mostrarán en la lista. Algunos puntos clave sobre ListView incluyen:
