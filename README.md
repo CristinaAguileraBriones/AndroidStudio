@@ -13,6 +13,8 @@ Los contenedores son elementos fundamentales en XML para organizar y estructurar
   - Para agregar elementos dentro de un `LinearLayout`, podemos utilizar `<`.
   - Si solamente tiene atributos sin elementos internos, se utiliza `/`.
 
+- **RelativeLayout**: Permite posicionar elementos relativos a otros elementos dentro del contenedor. Utiliza atributos como `android:layout_below`, `android:layout_alignParentTop`, etc., para definir las relaciones de posición.
+
 ### Elementos
 Los elementos son componentes individuales que componen la interfaz de usuario en Android. Algunos elementos comunes incluyen:
 
@@ -20,8 +22,8 @@ Los elementos son componentes individuales que componen la interfaz de usuario e
   
 - **Button**: Representa un botón interactivo que los usuarios pueden presionar para realizar acciones. Utiliza el atributo `android:text` para establecer el texto del botón.
   
-- **EditText**: Permite que los usuarios introduzcan y editen texto. Utiliza el atributo `android:hint` para mostrar un texto de ayuda cuando el campo está vacío.
-  
+- **EditText**: Permite que los usuarios introduzcan y editen texto. Utiliza el atributo `android:hint` para mostrar un texto de ayuda cuando el campo está vacío. El atributo `android:inputType` especifica el tipo de datos que se espera ingresar, como `text`, `number`, `phone`, `date`, entre otros.
+
 - **RadioButton**: Se utiliza en conjunto con `RadioGroup` para crear grupos de botones de selección exclusiva, donde solo se puede seleccionar un botón a la vez dentro del grupo.
   
 - **ImageView**: Muestra una imagen en la interfaz de usuario. Utiliza el atributo `android:src` para especificar la imagen que se mostrará.
@@ -35,8 +37,21 @@ Los atributos son propiedades que se pueden aplicar a los elementos en XML para 
   
 - `android:gravity`: Define la alineación del contenido dentro del elemento, como `center`, `start`, `end`, `top`, `bottom`, etc.
   
+- `android:layout_gravity`: Se aplica a los hijos de un contenedor para controlar su alineación dentro de ese contenedor.
+  
 - `android:margin` y `android:padding`: Controlan los márgenes y el relleno alrededor del elemento para ajustar su posición y espacio respecto a otros elementos y el borde del contenedor.
   
 - `android:hint`: Proporciona un texto de sugerencia o guía que aparece en un `EditText` cuando está vacío.
   
 - `android:text`: Establece el texto que se mostrará en un `TextView` o `Button`.
+  
+- `inputType: tipo_dato`: Restringe el tipo de dato que el usuario puede introducir.
+
+### ListView
+ListView es un componente que permite mostrar una lista de elementos desplazables en Android. Se utiliza junto con un adaptador para proporcionar los datos que se mostrarán en la lista. Algunos puntos clave sobre ListView incluyen:
+
+- **Adapter**: Necesario para proporcionar los datos y establecer la apariencia de cada elemento en la lista.
+- **Desplazamiento**: ListView maneja automáticamente el desplazamiento de la lista cuando hay muchos elementos para mostrar.
+- **Personalización**: Permite personalizar la apariencia de los elementos de la lista mediante adaptadores personalizados y diseño de elementos de lista.
+
+Estos conceptos y elementos son fundamentales para el desarrollo de interfaces de usuario en Android usando XML y proporcionan la base para crear aplicaciones visualmente atractivas y funcionales.
